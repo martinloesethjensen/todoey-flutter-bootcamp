@@ -6,7 +6,6 @@ import 'package:todoey_flutter_bootcamp/models/task_data.dart';
 class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     String _addTaskName, _addTaskDescription;
 
     return Container(
@@ -28,7 +27,9 @@ class AddTaskScreen extends StatelessWidget {
             ),
             TextField(
               textAlign: TextAlign.center,
-              decoration: InputDecoration(hintText: "Task name", ),
+              decoration: InputDecoration(
+                hintText: "Task name",
+              ),
               autofocus: true,
               onChanged: (value) => _addTaskName = value,
             ),
@@ -38,16 +39,19 @@ class AddTaskScreen extends StatelessWidget {
               onChanged: (value) => _addTaskDescription = value,
             ),
             FlatButton(
-              child: Text("Add", style: TextStyle(
-                color: Colors.white
-              ),),
+              child: Text(
+                "Add",
+                style: TextStyle(color: Colors.white),
+              ),
               color: Colors.lightBlueAccent,
               onPressed: () {
                 if (_addTaskName != null) {
-                  final newTask = Task(name: _addTaskName, description: _addTaskDescription);
-                  Provider.of<TaskData>(context, listen: false).addTask(newTask);
+                  final newTask = Task(
+                      name: _addTaskName, description: _addTaskDescription);
+                  Provider.of<TaskData>(context, listen: false)
+                      .addTask(newTask);
                 }
-                
+
                 Navigator.pop(context);
               },
             ),
